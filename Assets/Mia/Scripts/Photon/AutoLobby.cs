@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class AutoLobby : MonoBehaviourPunCallbacks
 {
+    public string DefaultName = "DEFAULTPLAYER";
 
     public Button ConnectButton;
     public Button JoinRandomButton;
     public Text log;
     public Text PlayersCount;
+    public InputField PlayerNameField;
+    public Text PlayerName;
     public int playersCount = 0;
     public string serverRegion = "us";
 
@@ -39,6 +42,7 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         ConnectButton.interactable = false;
+        PlayerNameField.interactable = true;
         JoinRandomButton.interactable = true;
 
     }
@@ -84,7 +88,7 @@ public class AutoLobby : MonoBehaviourPunCallbacks
             
             if (!isLoading && playersCount >= minPlayersPerRoom)
             {
-                Debug.Log(playersCount+ " " + minPlayersPerRoom);
+                PhotonNetwork.player
                 LoadMap();
             }
 

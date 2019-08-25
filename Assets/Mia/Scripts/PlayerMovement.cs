@@ -13,16 +13,17 @@ public class PlayerMovement : MonoBehaviourPun
     public float topBotSize = 23.5f;
     public float leftRightSize = 23.5f;
     public float pushRadius = 5f;
+    public TextMesh playerName;
 
-    PhotonView photonView;
+    public float timerPush = 7f;
+    public float cdPush = 7f;
+
     Rigidbody rb;
 
     public bool isPlayer = false;
 
     private void Awake()
     {
-        photonView = GetComponent<PhotonView>();
-
 
         if (photonView.IsMine)
         {
@@ -34,14 +35,16 @@ public class PlayerMovement : MonoBehaviourPun
     // Update is called once per frame 
     void Update()
     {
-
+        if (timerPush < cdPush)
+        {
+            timerPush += Time.deltaTime;
+        }
         //if (!isLocalPlayer)
         //{
         //    return;
         //}
         if (isPlayer == true)
         {
-
 
             if ((Input.GetKey(KeyCode.W)) && (transform.position.y >= topBotSize == false))
             {
@@ -69,8 +72,9 @@ public class PlayerMovement : MonoBehaviourPun
 
             }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) && timerPush >= cdPush)
             {
+                timerPush = 0;
                 Debug.Log("PULSANDO F");
                 Push();
             }
@@ -109,23 +113,28 @@ public class PlayerMovement : MonoBehaviourPun
         int[] idArray = new int[4];
         int contador = 0;
 
+
+
         for (int i = 0; i < inArea.Length; i++)
         {
-            Debug.Log(inArea[i].gameObject.name);
+            Debug.Log(i+". "+inArea[i].gameObject.name);
 
 
             if (inArea[i].gameObject.tag == "player")
             {
+                Debug.Log("Añadimos este");
                 idArray[contador] = inArea[i].gameObject.GetComponent<PhotonView>().ViewID;
                 contador++;
             }
 
         }
 
+        Debug.Log("Objetos en Array antes de enviar " + idArray.Length);
+
         if (idArray != null)
         {
             this.transform.position = new Vector3(0, 0, 0);
-            photonView.RPC("pushBack", RpcTarget.All, idArray, gameObject.transform.position);
+            photonView.RPC("pushBack", RpcTarget.All, idArray, gameObject.transform.position, "");
         }
                 
     }
@@ -138,12 +147,14 @@ public class PlayerMovement : MonoBehaviourPun
     }
 
     [PunRPC]
-    void pushBack(int[] idArray, Vector3 position)
+    void pushBack(int[] idArray, Vector3 position, string lol)
     {
-        List<int> idList = new List<int>();
+
+        Debug.Log("RPC RECIBIDO POR "+photonView.ViewID+" QUE CORRESPONDE A "+gameObject.name+" Y EL ARRAY TIENE "+idArray.Length+" objetos");
+
         bool shouldIPush = false;
 
-        for (int i = 0; i < idArray.Length - 1; i++)
+        for (int i = 0; i < idArray.Length; i++)
         {
             Debug.Log("Mi ID es " + photonView.ViewID + " y el ID a comparar es " + idArray[i]);
             if (idArray[i] == photonView.ViewID)
