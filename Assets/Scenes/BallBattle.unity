@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e84d7734941fc479b6f9428095c035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnBalls: 0
   chooseCorner: 0
   spawnBallTimer: 5
   spawnTimer: 0

@@ -119,6 +119,7 @@ MonoBehaviour:
   leftRightSize: 23.5
   pushRadius: 5
   playerName: {fileID: 0}
+  PlayerNameString: 
   timerPush: 0
   cdPush: 7
   isPlayer: 0
@@ -150,13 +151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a263ae8599687489e3608cadd22b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeedBackup: 0.2
-  normalSpeed: 0.25
-  runSpeed: 0.4
+  normalSpeedBackup: 15
+  normalSpeed: 15
+  runSpeed: 6
   topBotSize: 23.5
   leftRightSize: 23.5
   pushRadius: 5
-  playerName: {fileID: 0}
+  playerName: {fileID: 6643075145190380628}
+  PlayerNameString: 
   timerPush: 0
   cdPush: 7
   isPlayer: 0

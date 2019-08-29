@@ -17,8 +17,15 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     public int playersCount = 0;
     public string serverRegion = "us";
 
+    public Text CountDown;
+    public float CountDownTimer = 10;
+    public bool CanStartCount = false;
+    public bool CanLoadLevel = false;
+
+
     public byte maxPlayersPerRoom = 4;
     public byte minPlayersPerRoom = 2;
+
     private bool isLoading = false;
 
 
@@ -43,8 +50,9 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     {
         ConnectButton.interactable = false;
         PlayerNameField.interactable = true;
+        PlayerNameField.interactable = true;
         JoinRandomButton.interactable = true;
-
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public void JoinRandom()
@@ -59,8 +67,8 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         log.text += "\nNo rooms found. Creating one...";
-
-        if(PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions() { MaxPlayers = maxPlayersPerRoom }))
+        int roomNumber = PhotonNetwork.CountOfRooms + 1;
+        if (PhotonNetwork.CreateRoom("Room " + roomNumber, new Photon.Realtime.RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = maxPlayersPerRoom }))
         {
             log.text += "\nRoom created!";
 
@@ -76,6 +84,15 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         log.text += "\nRoom joined!";
+        if (PhotonNetwork.IsMasterClient)
+        {
+            log.text += "\n##### You are the Master Client";
+        }
+        else
+        {
+            log.text += "\n---- YOU ARENT MASTER CLIENT";
+        }
+        PlayerNameField.interactable = true;
         JoinRandomButton.interactable = false;
     }
 
@@ -88,13 +105,40 @@ public class AutoLobby : MonoBehaviourPunCallbacks
             
             if (!isLoading && playersCount >= minPlayersPerRoom)
             {
-                PhotonNetwork.player
-                LoadMap();
+                CanStartCount = true;
+            }
+            else
+            {
+                CanStartCount = false;
             }
 
         }
 
-        
+        if (CanStartCount)
+        {
+           
+            if(CountDownTimer >= 0)
+            {
+                CountDownTimer -= Time.deltaTime;
+                CountDown.text = "Starting in " + (int)CountDownTimer;
+                if (CountDownTimer <= 0)
+                {
+                    PhotonNetwork.NickName = PlayerName.text;
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        LoadMap();
+                    }
+
+                }
+            }
+
+        }
+        else
+        {
+            CountDownTimer = 10;
+        }
+
+
 
     }
 
@@ -107,5 +151,7 @@ public class AutoLobby : MonoBehaviourPunCallbacks
             PhotonNetwork.LoadLevel("BallBattle");
         }
     }
+
+    
 
 }

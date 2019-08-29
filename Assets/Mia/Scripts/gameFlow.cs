@@ -6,6 +6,8 @@ using Photon.Pun;
 public class gameFlow : MonoBehaviourPun
 {
 
+    public bool SpawnBalls;
+
     public float chooseCorner;
     public float spawnBallTimer = 5;
     public float spawnTimer = 0;
@@ -17,7 +19,9 @@ public class gameFlow : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
+
         spawnPlayer();
+        SpawnBalls = false;
     }
 
     // Update is called once per frame
@@ -27,14 +31,18 @@ public class gameFlow : MonoBehaviourPun
         {
             return;
         }
+        if (SpawnBalls)
+        {
 
-        if (GameObject.FindGameObjectWithTag("player")) { 
-        spawnTimer += Time.deltaTime;
-            if (spawnTimer > spawnBallTimer)
+            if (GameObject.FindGameObjectWithTag("player"))
             {
-              PhotonNetwork.Instantiate(bulletReference.name, chooseCornerFunc(), new Quaternion(0, 0, 0, 0));
-               spawnTimer = 0;
-               chooseCornerFunc();
+                spawnTimer += Time.deltaTime;
+                if (spawnTimer > spawnBallTimer)
+                {
+                    PhotonNetwork.Instantiate(bulletReference.name, chooseCornerFunc(), new Quaternion(0, 0, 0, 0));
+                    spawnTimer = 0;
+                    chooseCornerFunc();
+                }
             }
         }
     }
