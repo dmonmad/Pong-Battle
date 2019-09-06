@@ -16,15 +16,20 @@ public class PlayerMovement : MonoBehaviourPun
     public TextMesh playerName;
     public string PlayerNameString;
 
+    public GameObject explodeParticle;
+
     public float timerPush = 7f;
     public float cdPush = 7f;
 
+    PhotonView photonView;
     Rigidbody rb;
 
     public bool isPlayer = false;
 
     private void Awake()
     {
+        photonView = GetComponent<PhotonView>();
+
 
         if (photonView.IsMine)
         {
@@ -45,7 +50,8 @@ public class PlayerMovement : MonoBehaviourPun
         {
             playerName.text = photonView.Owner.NickName + " : " + photonView.ViewID;
         }
-        
+
+        //explodeParticle = Resources.Load("Explode") as GameObject;
 
     }
 
@@ -56,10 +62,7 @@ public class PlayerMovement : MonoBehaviourPun
         {
             timerPush += Time.deltaTime;
         }
-        //if (!isLocalPlayer)
-        //{
-        //    return;
-        //}
+
         if (isPlayer)
         {
 
@@ -99,6 +102,17 @@ public class PlayerMovement : MonoBehaviourPun
                 Debug.Log("PULSANDO F");
                 Push();
             }
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                Die();
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Debug.Log("Players: " + PhotonNetwork.PlayerList);
+            }
+
         }
     }
 
@@ -122,26 +136,28 @@ public class PlayerMovement : MonoBehaviourPun
 
     void Die()
     {
+        Instantiate(explodeParticle, gameObject.transform.position, Quaternion.identity);
+        this.photonView.RPC("DestroyPlayer", RpcTarget.OthersBuffered);
         Destroy(this.gameObject);
-        photonView.RPC("DestroyPlayer", RpcTarget.OthersBuffered);
+
     }
 
     void Push()
     {
 
-        int[] idArray = new int[4];
+        int[] idArray = new int[3];
 
         Debug.Log("BUSCANDO OBJETOS");
 
         Collider[] inArea = Physics.OverlapSphere(transform.position, pushRadius);
 
         Debug.Log("Objetos en INAREA "+inArea.Length);
-        
+
         int contador = 0;
 
         for (int i = 0; i < inArea.Length; i++)
         {
-            Debug.Log(i+". "+inArea[i].gameObject.name);
+           Debug.Log(i+". "+inArea[i].gameObject.name);
 
 
             if (inArea[i].gameObject.tag == "player" && !inArea[i].gameObject.Equals(gameObject))
@@ -157,56 +173,63 @@ public class PlayerMovement : MonoBehaviourPun
 
         }
 
-        Debug.Log("Objetos en Array antes de enviar " + idArray.Length);
-
-        if (idArray != null)
+        if (idArray[0] != 0)
         {
-            
-            photonView.RPC("pushBack", RpcTarget.All, idArray, gameObject.transform.position);
+
+
+            this.photonView.RPC("PushBack", RpcTarget.Others, idArray);
         }
-                
+
     }
-    
+
+
     [PunRPC]
     void DestroyPlayer(PhotonMessageInfo info)
     {
-        Destroy(info.photonView.gameObject);
-
-    }
-
-    [PunRPC]
-    void pushBack(int[] idArray, Vector3 position)
-    {
-
-        Debug.Log("RPC RECIBIDO POR "+photonView.ViewID+" QUE CORRESPONDE A "+gameObject.name+" Y EL ARRAY TIENE "+idArray.Length+" objetos");
-
-        bool shouldIPush = false;
-
-        for (int i = 0; i < idArray.Length; i++)
-        {
-            Debug.Log("Mi ID es " + photonView.ViewID + " y el ID a comparar es " + idArray[i]);
-            if (idArray[i] == photonView.ViewID)
-            {
-                shouldIPush = true;
-            }
-        }
         
-        if (shouldIPush)
-        {
-            Debug.LogError("AÑADIENDO FUERZA A RB");
-            gameObject.transform.position = new Vector3(0, 0, -0.5f);
-
-        }
-
-        Debug.Log("WTF");
+            Instantiate(explodeParticle, info.photonView.gameObject.transform.position, Quaternion.identity);
+            Destroy(info.photonView.gameObject);
+        
     }
 
-
     [PunRPC]
-    void setName(PhotonMessageInfo info, string name)
+    void PushBack(int[] idArray)
     {
-        PhotonView.Find(info.photonView.ViewID).gameObject.GetComponent<PlayerMovement>().PlayerNameString = name; ;
-        //info.photonView.gameObject.GetComponent<PlayerMovement>().PlayerNameString = name;
+        //Debug.LogWarning("RPC RECIBIDO POR " + this.photonView.ViewID + " QUE CORRESPONDE A " + this.photonView.Owner.NickName + " que ha sido enviado por " + info.photonView.Owner.NickName + " con ID "+ info.photonView.ViewID);
+        //if (this.photonView.IsMine && info.photonView.ViewID == this.photonView.ViewID)
+        //{
+
+        for(int i=0; i < idArray.Length; i++)
+        {
+        GameObject go = PhotonView.Find(idArray[i]).gameObject;
+        go.transform.position = new Vector3(0, 0, -1.2f);
+        }
+
+        //}
+            //bool shouldIPush = false;
+
+            //for (int i = 0; i < idArray.Length; i++)
+            //{
+            //    Debug.Log("Mi ID es " + photonView.ViewID + " y el ID a comparar es " + idArray[i]);
+            //    if (idArray[i] == photonView.ViewID)
+            //    {
+            //        shouldIPush = true;
+            //    }
+            //    else
+            //    {
+            //        shouldIPush = false;
+            //    }
+            //}
+
+            //if (shouldIPush)
+            //{
+            //    Debug.LogError("AÑADIENDO FUERZA A RB");
+            //    gameObject.transform.position = new Vector3(0, 0, -0.5f);
+
+            //}
+
+            //Debug.Log("WTF");
+        
     }
 
     void OnDrawGizmos()

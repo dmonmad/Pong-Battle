@@ -81,8 +81,9 @@ public class gameFlow : MonoBehaviourPun
 
     void spawnPlayer()
     {
-        PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, 0, 1.2f), new Quaternion(0, 0, 0, 0));
-        Instantiate(cameraPrefab, new Vector3(0, 0, 1.2f), new Quaternion(0, 0, 0, 0));
+        GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, 0, 1.2f), new Quaternion(0, 0, 0, 0));
+        GameObject mycamera = Instantiate(cameraPrefab, new Vector3(0, 0, 1.2f), new Quaternion(0, 0, 0, 0));
+        //mycamera.GetComponent<cameraFollow>().target = player.transform.GetChild(0);
     }
 
 }

@@ -87,6 +87,7 @@ public class AutoLobby : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             log.text += "\n##### You are the Master Client";
+
         }
         else
         {
@@ -98,6 +99,7 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
+
         if (PhotonNetwork.CurrentRoom != null)
         {
             playersCount = PhotonNetwork.CurrentRoom.PlayerCount;
@@ -116,21 +118,23 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
         if (CanStartCount)
         {
-           
-            if(CountDownTimer >= 0)
-            {
-                CountDownTimer -= Time.deltaTime;
-                CountDown.text = "Starting in " + (int)CountDownTimer;
-                if (CountDownTimer <= 0)
+            
+                if (CountDownTimer >= 0)
                 {
-                    PhotonNetwork.NickName = PlayerName.text;
-                    if (PhotonNetwork.IsMasterClient)
+                    CountDownTimer -= Time.deltaTime;
+                    CountDown.text = "Starting in " + (int)CountDownTimer;
+                    if (CountDownTimer <= 0)
                     {
-                        LoadMap();
-                    }
+                        
+                        if (PhotonNetwork.IsMasterClient)
+                        {
+                            LoadMap();
 
+                        }
+
+                    }
                 }
-            }
+            
 
         }
         else
@@ -150,6 +154,11 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
             PhotonNetwork.LoadLevel("BallBattle");
         }
+    }
+
+    public void UpdateName()
+    {
+        PhotonNetwork.NickName = PlayerName.text;
     }
 
     
