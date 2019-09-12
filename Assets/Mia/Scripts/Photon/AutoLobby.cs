@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -95,6 +96,39 @@ public class AutoLobby : MonoBehaviourPunCallbacks
         }
         PlayerNameField.interactable = true;
         JoinRandomButton.interactable = false;
+
+
+        int color = playersCount;
+        ExitGames.Client.Photon.Hashtable colores = new ExitGames.Client.Photon.Hashtable();
+        colores.Add("playercolor", color);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(colores);
+
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        if (CanStartCount)
+        {
+            CountDownTimer = 10;
+        }
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        ExitGames.Client.Photon.Hashtable oldcolors = PhotonNetwork.LocalPlayer.CustomProperties;
+        int oldcolor = int.Parse(oldcolors["playercolor"].ToString());
+        if(oldcolor > playersCount)
+        {
+
+            oldcolors["playercolor"] = playersCount;
+            PhotonNetwork.SetPlayerCustomProperties(oldcolors);
+        }
+        
+    }
+
+    public override void OnLeftRoom()
+    {
+        PhotonNetwork.SetPlayerCustomProperties(null);
     }
 
     private void FixedUpdate()
@@ -125,8 +159,17 @@ public class AutoLobby : MonoBehaviourPunCallbacks
                     CountDown.text = "Starting in " + (int)CountDownTimer;
                     if (CountDownTimer <= 0)
                     {
-                        
-                        if (PhotonNetwork.IsMasterClient)
+
+                        if (PlayerName.text != "" && PlayerName.text != null && PlayerName.text != " ")
+                        {
+                            PhotonNetwork.NickName = PlayerName.text;
+                        }
+                        else
+                        {
+                            PhotonNetwork.NickName = DefaultName;
+                        }
+
+                    if (PhotonNetwork.IsMasterClient)
                         {
                             LoadMap();
 
@@ -158,9 +201,14 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
     public void UpdateName()
     {
-        PhotonNetwork.NickName = PlayerName.text;
+        //if (PlayerName.text != "" && PlayerName.text != null)
+        //{
+        //    PhotonNetwork.NickName = PlayerName.text;
+        //}
+
+
     }
 
-    
+
 
 }

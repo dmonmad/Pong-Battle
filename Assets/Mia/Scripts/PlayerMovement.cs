@@ -16,8 +16,11 @@ public class PlayerMovement : MonoBehaviourPun
     public TextMesh playerName;
     public string PlayerNameString;
 
-    public GameObject explodeParticle;
 
+    public GameObject explodeParticle;
+    public GameObject pushParticle;
+
+    public float pushForce;
     public float timerPush = 7f;
     public float cdPush = 7f;
 
@@ -40,6 +43,9 @@ public class PlayerMovement : MonoBehaviourPun
 
     private void Start()
     {
+        SetColor();
+
+
         if (isPlayer)
         {
             PlayerNameString = PhotonNetwork.NickName + " : " + photonView.ViewID;
@@ -176,9 +182,23 @@ public class PlayerMovement : MonoBehaviourPun
         if (idArray[0] != 0)
         {
 
-
+            Instantiate(pushParticle, gameObject.transform.position, Quaternion.identity);
             this.photonView.RPC("PushBack", RpcTarget.Others, idArray);
         }
+
+    }
+
+    void SetColor()
+    {
+        if (photonView.IsMine)
+        {
+
+        }
+        else
+        {
+
+        }
+
 
     }
 
@@ -193,16 +213,32 @@ public class PlayerMovement : MonoBehaviourPun
     }
 
     [PunRPC]
-    void PushBack(int[] idArray)
+    void PushBack(int[] idArray, PhotonMessageInfo e)
     {
         //Debug.LogWarning("RPC RECIBIDO POR " + this.photonView.ViewID + " QUE CORRESPONDE A " + this.photonView.Owner.NickName + " que ha sido enviado por " + info.photonView.Owner.NickName + " con ID "+ info.photonView.ViewID);
         //if (this.photonView.IsMine && info.photonView.ViewID == this.photonView.ViewID)
         //{
+        //Debug.Log("???????????");
 
         for(int i=0; i < idArray.Length; i++)
         {
-        GameObject go = PhotonView.Find(idArray[i]).gameObject;
-        go.transform.position = new Vector3(0, 0, -1.2f);
+            //Debug.Log("!!!!!!!");
+            //Debug.Log("Valor IDARRAY[" + i + "] es " + idArray[i]);
+            if(idArray[i] != 0)
+            {
+                Instantiate(pushParticle, gameObject.transform.position, Quaternion.identity);
+                GameObject go = PhotonView.Find(idArray[i]).gameObject;
+                //go.transform.position = new Vector3(0, 0, -1.2f);
+                Vector3 knockback = go.gameObject.transform.position - gameObject.transform.position;
+                go.GetComponent<Rigidbody>().AddForce(knockback.normalized * pushForce, ForceMode.Impulse);
+                //Debug.Log("EL NOMBRE DE GO ES " + go.name);
+            }
+
+
+            //GameObject pusher = PhotonView.Find(data.photonView.ViewID).gameObject;
+            //Vector3 knockback = go.gameObject.transform.position - pusher.gameObject.transform.position;
+            //go.GetComponent<Rigidbody>().AddForce(knockback.normalized * PushForce);
+
         }
 
         //}

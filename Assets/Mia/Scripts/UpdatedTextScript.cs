@@ -7,28 +7,29 @@ public class UpdatedTextScript : MonoBehaviour
 {
 
     public Text TextName;
+    bool TimerActive = false;
+    float timer = 0f;
     public float wait;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        if (timer < wait && TimerActive)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if (timer > wait)
+        {
+            TextName.text = "";
+            TimerActive = false;
+        }
     }
 
     // Update is called once per frame
     public void UpdatedText()
     {
-        StartCoroutine(Waiting(wait));
-
-    }
-
-    IEnumerator Waiting(float seconds)
-    {
+        TimerActive = true;
         TextName.text = "Updated!";
-        yield return new WaitForSeconds(seconds);
-        TextName.text = "";
-
     }
-
 
 }

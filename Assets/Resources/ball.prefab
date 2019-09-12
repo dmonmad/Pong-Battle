@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6993436897664612614}
   - component: {fileID: 6993436897664612613}
   - component: {fileID: 6993436897664612612}
-  - component: {fileID: 6993436897664612609}
+  - component: {fileID: 1892549987780088372}
   - component: {fileID: 3037444416847598901}
   - component: {fileID: 7376990339038896596}
   - component: {fileID: 7035525658374481225}
@@ -113,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 2
---- !u!114 &6993436897664612609
+--- !u!114 &1892549987780088372
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be19d3a5f63fc2d4598bff2a1463a37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollisionParticles: {fileID: 6993436897664612731}
   speedX: 0
   speedY: 0
   startSpeed: 5

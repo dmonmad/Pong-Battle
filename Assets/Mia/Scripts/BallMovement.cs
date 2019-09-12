@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour {
 
+    public GameObject CollisionParticles;
+
     public float speedX;
     public float speedY;
     public float startSpeed = 5f;
@@ -52,5 +54,11 @@ public class BallMovement : MonoBehaviour {
 
         GetComponent<Rigidbody>().velocity = new Vector3(speedX * 2, speedY * 2, 0);
 
-    }        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Instantiate(CollisionParticles, collision.contacts[0].point, Quaternion.identity);
+    }
+
 }
