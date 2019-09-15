@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
 
 public class GameManager : MonoBehaviourPun
 {
@@ -14,14 +13,13 @@ public class GameManager : MonoBehaviourPun
     public float spawnTimer = 0;
     public GameObject playerPrefab;
     public GameObject cameraPrefab;
-    public GameObject bulletReference;
+    public GameObject ballPrefab;
 
 
     // Start is called before the first frame update
     void Start()
     {
         spawnPlayer();
-        SpawnBalls = false;
     }
 
     // Update is called once per frame
@@ -40,7 +38,7 @@ public class GameManager : MonoBehaviourPun
                 spawnTimer += Time.deltaTime;
                 if (spawnTimer > spawnBallTimer)
                 {
-                    PhotonNetwork.Instantiate(bulletReference.name, chooseCornerFunc(), new Quaternion(0, 0, 0, 0));
+                    PhotonNetwork.Instantiate(ballPrefab.name, chooseCornerFunc(), new Quaternion(0, 0, 0, 0));
                     spawnTimer = 0;
                     chooseCornerFunc();
                 }

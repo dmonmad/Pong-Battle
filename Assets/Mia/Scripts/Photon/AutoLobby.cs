@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AutoLobby : MonoBehaviourPunCallbacks
 {
@@ -11,21 +12,22 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
     public Button ConnectButton;
     public Button JoinRandomButton;
-    public Text log;
-    public Text PlayersCount;
-    public InputField PlayerNameField;
-    public Text PlayerName;
+    public TextMeshProUGUI log;
+    public TextMeshProUGUI PlayersCount;
+    public TMP_InputField PlayerNameField;
+    public TextMeshProUGUI PlayerName;
+    public Image blurPopup;
     public int playersCount = 0;
-    public string serverRegion = "us";
 
-    public Text CountDown;
-    public float CountDownTimer = 10;
+    public TextMeshProUGUI CountDown;
+    public float CountDownTimer;
+    public float CountDownLeft;
     public bool CanStartCount = false;
     public bool CanLoadLevel = false;
 
 
-    public byte maxPlayersPerRoom = 4;
-    public byte minPlayersPerRoom = 2;
+    public byte maxPlayersPerRoom;
+    public byte minPlayersPerRoom;
 
     private bool isLoading = false;
 
@@ -50,7 +52,6 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         ConnectButton.interactable = false;
-        PlayerNameField.interactable = true;
         PlayerNameField.interactable = true;
         JoinRandomButton.interactable = true;
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -94,14 +95,14 @@ public class AutoLobby : MonoBehaviourPunCallbacks
         {
             log.text += "\n---- YOU ARENT MASTER CLIENT";
         }
-        PlayerNameField.interactable = true;
         JoinRandomButton.interactable = false;
 
 
-        int color = playersCount;
+        int color = PhotonNetwork.CurrentRoom.PlayerCount - 1;
         ExitGames.Client.Photon.Hashtable colores = new ExitGames.Client.Photon.Hashtable();
         colores.Add("playercolor", color);
         PhotonNetwork.LocalPlayer.SetCustomProperties(colores);
+        log.text += color.ToString();
 
     }
 
@@ -109,22 +110,10 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     {
         if (CanStartCount)
         {
-            CountDownTimer = 10;
+            CountDownLeft = CountDownTimer;
         }
     }
 
-    public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        ExitGames.Client.Photon.Hashtable oldcolors = PhotonNetwork.LocalPlayer.CustomProperties;
-        int oldcolor = int.Parse(oldcolors["playercolor"].ToString());
-        if(oldcolor > playersCount)
-        {
-
-            oldcolors["playercolor"] = playersCount;
-            PhotonNetwork.SetPlayerCustomProperties(oldcolors);
-        }
-        
-    }
 
     public override void OnLeftRoom()
     {
@@ -153,11 +142,12 @@ public class AutoLobby : MonoBehaviourPunCallbacks
         if (CanStartCount)
         {
             
-                if (CountDownTimer >= 0)
+                if (CountDownLeft >= 0)
                 {
-                    CountDownTimer -= Time.deltaTime;
-                    CountDown.text = "Starting in " + (int)CountDownTimer;
-                    if (CountDownTimer <= 0)
+                    blurPopup.enabled = true;
+                    CountDownLeft -= Time.deltaTime;
+                    CountDown.text = "Starting in " + (int)CountDownLeft;
+                    if (CountDownLeft <= 0)
                     {
 
                         if (PlayerName.text != "" && PlayerName.text != null && PlayerName.text != " ")
@@ -177,16 +167,13 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
                     }
                 }
-            
-
         }
         else
         {
-            CountDownTimer = 10;
+            blurPopup.enabled = false;
+            CountDownLeft = CountDownTimer;
+            CountDown.text = "";
         }
-
-
-
     }
 
     private void LoadMap()
@@ -198,17 +185,4 @@ public class AutoLobby : MonoBehaviourPunCallbacks
             PhotonNetwork.LoadLevel("BallBattle");
         }
     }
-
-    public void UpdateName()
-    {
-        //if (PlayerName.text != "" && PlayerName.text != null)
-        //{
-        //    PhotonNetwork.NickName = PlayerName.text;
-        //}
-
-
-    }
-
-
-
 }

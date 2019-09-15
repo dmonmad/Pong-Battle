@@ -217,7 +217,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
+  m_StitchLightmapSeams: 1
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -377,7 +377,7 @@ MonoBehaviour:
     type: 3}
   cameraPrefab: {fileID: 5471322870102213830, guid: 7625de1147c88a943a7cfe8aa2740883,
     type: 3}
-  bulletReference: {fileID: 6993436897664612731, guid: 21b57063980c3d341a1fb3a29ae29a57,
+  ballPrefab: {fileID: 6993436897664612731, guid: 21b57063980c3d341a1fb3a29ae29a57,
     type: 3}
 --- !u!4 &1195483217
 Transform:

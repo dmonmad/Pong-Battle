@@ -143,6 +143,11 @@ MonoBehaviour:
   pushForce: 50
   timerPush: 0
   cdPush: 7
+  colors:
+  - {fileID: 2100000, guid: 9736095d2d4847e4585ecc839c3f6f00, type: 2}
+  - {fileID: 2100000, guid: fd41e438e2c592d48b90d393fc569053, type: 2}
+  - {fileID: 2100000, guid: 8b0b19679cdac2a45934146cb6af3d93, type: 2}
+  - {fileID: 2100000, guid: 8d106c8290c11874dadb19dfdb1d80c7, type: 2}
   isPlayer: 0
 --- !u!114 &6794524372264788967
 MonoBehaviour:

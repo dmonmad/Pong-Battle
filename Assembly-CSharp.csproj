@@ -164,6 +164,8 @@
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Cutout\MK_Cutout-Glossy.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Composite.hlsl" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Particle\MK_Particle AddMultiply.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\_MK\MKGlowFree\Legacy_3_0_7\ReadMe.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />
@@ -188,6 +190,7 @@
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-Diffuse.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-DiffuseBumpSpec.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.xml" />
@@ -195,6 +198,7 @@
     <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Downsample.hlsl" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Other\MK_Unlit-Normal.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\UI\UI-Default.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Blit.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\Sprites\Sprites-Diffuse.shader" />
@@ -215,12 +219,17 @@
     <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\UI.hlsl" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Unlit-TextDetail.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Photon\PhotonLibs\changes-library.txt" />
     <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Mia\Shaders\Blur.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\TAA.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\EyeHistogram.compute" />
     <None Include="Assets\PostProcessing\Resources\Shaders\TAA.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-DiffuseBumped.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Lit-Refraction.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Other\MK_Mobile-Diffuse.shader" />
@@ -230,13 +239,17 @@
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Lit-Detail.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-DefaultFont.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\OmniSARTechnologies\LiteFPSCounter\Demo\Shaders\HeavyRenderingTest.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Debug.hlsl" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Normal\MK_Normal-Diffuse.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Lit-RefractionDetail.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
     <None Include="Assets\Photon\PhotonUnityNetworking\readme.txt" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Presample.hlsl" />
@@ -244,49 +257,55 @@
     <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\Upsample.hlsl" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\MKGlowStandardSpecular.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Illumin\MK_Illumin-Diffuse.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\Inc\CompositeSample.hlsl" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\Sprites\Sprites-Default.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-Glossy.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Default.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Cutout\MK_Cutout-Diffuse.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\Effect\MKGlowSelectiveRender.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Lit-Bumped.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Cutout\MK_Cutout-DiffuseBumped.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Lit-Transparent.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Unlit-Transparent.shader" />
     <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Sprites\Sprites-Default.shader" />
     <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -466,10 +485,10 @@
       <HintPath>D:/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>D:/UnityProjects/Pong Battle/Pong-Battle/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+      <HintPath>D:/UnityProjects/Pong-Battle/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:/Unity/2019.2.0f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

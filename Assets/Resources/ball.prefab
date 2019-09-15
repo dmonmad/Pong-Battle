@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be19d3a5f63fc2d4598bff2a1463a37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionParticles: {fileID: 6993436897664612731}
+  CollisionParticles: {fileID: 4748421038919942521, guid: 3ba620cc4a47dda478b32bac6be018a0,
+    type: 3}
   speedX: 0
   speedY: 0
   startSpeed: 5

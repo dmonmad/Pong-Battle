@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviourPun
     PhotonView photonView;
     Rigidbody rb;
 
+    public Material[] colors;
+
     public bool isPlayer = false;
 
     private void Awake()
@@ -109,15 +111,10 @@ public class PlayerMovement : MonoBehaviourPun
                 Push();
             }
 
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                Die();
-            }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                Debug.Log("Players: " + PhotonNetwork.PlayerList);
-            }
+            //if (Input.GetKeyDown(KeyCode.M))
+            //{
+            //    Die();
+            //}
 
         }
     }
@@ -192,14 +189,13 @@ public class PlayerMovement : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
-
+            ExitGames.Client.Photon.Hashtable e = PhotonNetwork.LocalPlayer.CustomProperties;
+            int color = int.Parse(e["playercolor"].ToString());
+            gameObject.GetComponent<MeshRenderer>().material = colors[color];
+            photonView.RPC("SendColor", RpcTarget.OthersBuffered, color);
         }
-        else
-        {
-
-        }
-
-
+        
+        
     }
 
 
@@ -266,6 +262,12 @@ public class PlayerMovement : MonoBehaviourPun
 
             //Debug.Log("WTF");
         
+    }
+
+    [PunRPC]
+    void SendColor(int color, PhotonMessageInfo e)
+    {
+        e.photonView.gameObject.GetComponent<MeshRenderer>().material = colors[color];
     }
 
     void OnDrawGizmos()
