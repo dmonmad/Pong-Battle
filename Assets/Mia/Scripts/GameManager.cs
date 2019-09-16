@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviourPun
         if (SpawnBalls)
         {
 
-            if (GameObject.FindGameObjectWithTag("player"))
+            if (GameObject.FindGameObjectsWithTag("player").Length >= 2)
             {
                 spawnTimer += Time.deltaTime;
                 if (spawnTimer > spawnBallTimer)
@@ -84,6 +84,17 @@ public class GameManager : MonoBehaviourPun
         player.name = PhotonNetwork.NickName;
         GameObject mycamera = Instantiate(cameraPrefab, new Vector3(0, 0, 1.2f), new Quaternion(0, 0, 0, 0));
         //mycamera.GetComponent<cameraFollow>().target = player.transform.GetChild(0);
+    }
+
+    void CheckDeaths()
+    {
+        if(GameObject.FindGameObjectsWithTag("player").Length <= 1)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.LoadLevel("Main");
+            }
+        }
     }
 
 }

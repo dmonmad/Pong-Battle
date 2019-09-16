@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PinkMaterial
+  m_Name: YellowMaterial
   m_Shader: {fileID: 4800000, guid: 1e9f5070bb59d4749ac7ae2b066204d9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -78,8 +78,8 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Glow: 1.39
-    - _MKGlowPower: 3.16
-    - _MKGlowTexStrength: 0.28
+    - _MKGlowPower: 1.25
+    - _MKGlowTexStrength: 1.16
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -91,8 +91,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.68235296, b: 0.79215693, a: 1}
+    - _Color: {r: 1, g: 0.95294124, b: 0, a: 1}
     - _EmissionColor: {r: 0.3679245, g: 0, b: 0, a: 0}
-    - _MKGlowColor: {r: 1, g: 0.68235296, b: 0.79215693, a: 1}
-    - _MKGlowTexColor: {r: 1, g: 0.68235296, b: 0.79215693, a: 1}
+    - _MKGlowColor: {r: 1, g: 0.95294124, b: 0, a: 1}
+    - _MKGlowTexColor: {r: 1, g: 0.95294124, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

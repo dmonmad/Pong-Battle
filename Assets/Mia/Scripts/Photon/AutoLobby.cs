@@ -152,6 +152,7 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
                         if (PlayerName.text != "" && PlayerName.text != null && PlayerName.text != " ")
                         {
+                            Debug.Log("Setting the name " + PlayerName.text);
                             PhotonNetwork.NickName = PlayerName.text;
                         }
                         else

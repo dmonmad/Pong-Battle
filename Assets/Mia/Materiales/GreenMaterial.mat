@@ -78,8 +78,8 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Glow: 1.39
-    - _MKGlowPower: 3.16
-    - _MKGlowTexStrength: 0.28
+    - _MKGlowPower: 1.88
+    - _MKGlowTexStrength: 1.16
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
