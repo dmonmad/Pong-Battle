@@ -91,6 +91,7 @@
     <Compile Include="Assets\Mia\Scripts\GameManager.cs" />
     <Compile Include="Assets\Mia\Scripts\Photon\AutoLobby.cs" />
     <Compile Include="Assets\Mia\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Mia\Scripts\UIScripts\RandomMovement.cs" />
     <Compile Include="Assets\Mia\Scripts\UpdatedTextScript.cs" />
     <Compile Include="Assets\OmniSARTechnologies\Common\Helper\GUI\ColorHelper.cs" />
     <Compile Include="Assets\OmniSARTechnologies\Common\Helper\Reflection\CustomAttributes.cs" />
