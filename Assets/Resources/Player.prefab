@@ -136,13 +136,14 @@ MonoBehaviour:
   pushRadius: 5
   playerName: {fileID: 6643075145190380628}
   PlayerNameString: 
+  gameflow: {fileID: 0}
   explodeParticle: {fileID: 4550527056472925406, guid: 12a16dc701ed03f47b93b73d6842de16,
     type: 3}
   pushParticle: {fileID: 4833300066859298433, guid: 4287ec7df89067b4c810305b6c22b204,
     type: 3}
-  pushForce: 50
+  pushForce: 80
   timerPush: 0
-  cdPush: 7
+  cdPush: 3
   colors:
   - {fileID: 2100000, guid: 9736095d2d4847e4585ecc839c3f6f00, type: 2}
   - {fileID: 2100000, guid: fd41e438e2c592d48b90d393fc569053, type: 2}

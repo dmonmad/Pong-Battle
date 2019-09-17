@@ -8,9 +8,8 @@ using TMPro;
 
 public class AutoLobby : MonoBehaviourPunCallbacks
 {
-    public string DefaultName = "DEFAULTPLAYER";
+    public string DefaultName;
 
-    public Button ConnectButton;
     public Button JoinRandomButton;
     public TextMeshProUGUI log;
     public TextMeshProUGUI PlayersCount;
@@ -32,26 +31,50 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     private bool isLoading = false;
 
 
+    public void Start()
+    {
+        Connect();
+
+    }
+
     public void Connect()
     {
-        //PhotonNetwork.ConnectToRegion(serverRegion);
-        if (!PhotonNetwork.IsConnected)
+        bool connected = false;
+        int i = 0;
+
+        while (!connected & i <= 4)
         {
-            if (PhotonNetwork.ConnectUsingSettings())
+            if (!PhotonNetwork.IsConnected)
             {
-                log.text += "\nConnected to server " + PhotonNetwork.ServerAddress;
+
+                log.text += "\nTrying connecting to a server";
+                if (PhotonNetwork.ConnectUsingSettings())
+                {
+                    log.text += "\nConnected to server " + PhotonNetwork.ServerAddress;
+                    log.text += "\nAllowing Join button and Name input";
+                    connected = true;
+                }
+                else
+                {
+                    log.text += "\nThere was a problem connecting to server!";
+                }
             }
             else
             {
-                log.text += "\nThere was a problem connecting to server!";
+                connected = true;
+            }
+
+            if (i == 4){
+                log.text += "\nIt looks like there're no servers up right now!";
             }
         }
+
+        
 
     }
 
     public override void OnConnectedToMaster()
     {
-        ConnectButton.interactable = false;
         PlayerNameField.interactable = true;
         JoinRandomButton.interactable = true;
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -59,9 +82,12 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
     public void JoinRandom()
     {
+
+        log.text += "\nSearching for a room";
+
         if (!PhotonNetwork.JoinRandomRoom())
         {
-            log.text += "\nFail joining";
+            log.text += "\nFail joining. There're no available rooms to enter";
         }
         
     }
@@ -70,6 +96,7 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     {
         log.text += "\nNo rooms found. Creating one...";
         int roomNumber = PhotonNetwork.CountOfRooms + 1;
+
         if (PhotonNetwork.CreateRoom("Room " + roomNumber, new Photon.Realtime.RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = maxPlayersPerRoom }))
         {
             log.text += "\nRoom created!";
@@ -88,13 +115,10 @@ public class AutoLobby : MonoBehaviourPunCallbacks
         log.text += "\nRoom joined!";
         if (PhotonNetwork.IsMasterClient)
         {
-            log.text += "\n##### You are the Master Client";
+            log.text += "\n##### MC";
 
         }
-        else
-        {
-            log.text += "\n---- YOU ARENT MASTER CLIENT";
-        }
+       
         JoinRandomButton.interactable = false;
 
 
@@ -102,7 +126,6 @@ public class AutoLobby : MonoBehaviourPunCallbacks
         ExitGames.Client.Photon.Hashtable colores = new ExitGames.Client.Photon.Hashtable();
         colores.Add("playercolor", color);
         PhotonNetwork.LocalPlayer.SetCustomProperties(colores);
-        log.text += color.ToString();
 
     }
 
@@ -150,10 +173,10 @@ public class AutoLobby : MonoBehaviourPunCallbacks
                     if (CountDownLeft <= 0)
                     {
 
-                        if (PlayerName.text != "" && PlayerName.text != null && PlayerName.text != " ")
+                        if (!string.IsNullOrEmpty(PlayerNameField.text))
                         {
-                            Debug.Log("Setting the name " + PlayerName.text);
-                            PhotonNetwork.NickName = PlayerName.text;
+                            Debug.Log("Setting the name " + PlayerNameField.text);
+                            PhotonNetwork.NickName = PlayerNameField.text;
                         }
                         else
                         {
@@ -185,5 +208,10 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
             PhotonNetwork.LoadLevel("BallBattle");
         }
+    }
+
+    private void SetName()
+    {
+        PlayerName.text = PhotonNetwork.NickName;
     }
 }

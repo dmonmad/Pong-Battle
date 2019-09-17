@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPun
@@ -15,14 +14,15 @@ public class PlayerMovement : MonoBehaviourPun
     public float pushRadius;
     public TextMesh playerName;
     public string PlayerNameString;
+    public GameFlow gameflow;
 
 
     public GameObject explodeParticle;
     public GameObject pushParticle;
 
     public float pushForce;
-    public float timerPush = 7f;
-    public float cdPush = 7f;
+    public float timerPush;
+    public float cdPush;
 
     PhotonView photonView;
     Rigidbody rb;
@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviourPun
 
     private void Start()
     {
+        gameflow = GameObject.FindGameObjectWithTag("gameflow").GetComponent<GameFlow>();
+
         SetColor();
 
 
@@ -139,6 +141,7 @@ public class PlayerMovement : MonoBehaviourPun
 
     void Die()
     {
+        gameflow.CheckPlayersLeft();
         Instantiate(explodeParticle, gameObject.transform.position, Quaternion.identity);
         this.photonView.RPC("DestroyPlayer", RpcTarget.OthersBuffered);
         Destroy(this.gameObject);
@@ -202,10 +205,10 @@ public class PlayerMovement : MonoBehaviourPun
     [PunRPC]
     void DestroyPlayer(PhotonMessageInfo info)
     {
-        
-            Instantiate(explodeParticle, info.photonView.gameObject.transform.position, Quaternion.identity);
-            Destroy(info.photonView.gameObject);
-        
+
+        Instantiate(explodeParticle, info.photonView.gameObject.transform.position, Quaternion.identity);
+        Destroy(info.photonView.gameObject);
+        gameflow.CheckPlayersLeft();        
     }
 
     [PunRPC]

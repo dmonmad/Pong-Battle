@@ -7,8 +7,8 @@ TagManager:
   - wall
   - ball
   - player
-  - camara1
   - camPos
+  - gameflow
   layers:
   - Default
   - TransparentFX

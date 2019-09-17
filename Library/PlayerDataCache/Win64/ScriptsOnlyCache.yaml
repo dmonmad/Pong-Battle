@@ -4,7 +4,7 @@ ScriptsOnlyBuild:
     - AutoDestroy
     - AutoLobby
     - BallMovement
-    - GameManager
+    - GameFlow
     - MK.Glow.Legacy.MKGlow
     - MK.Glow.Resources
     - OmniSARTechnologies.LiteFPSCounter.LiteFPSCounter
@@ -35,6 +35,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
+    - TMPro.TMP_SubMeshUI
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -202,6 +203,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10238}
     - Class: 114
       Script: {instanceID: 10406}
+    - Class: 114
+      Script: {instanceID: 10428}
     - Class: 114
       Script: {instanceID: 10548}
     - Class: 114
@@ -980,7 +983,7 @@ ScriptsOnlyBuild:
       Hash: 26403ae5df68d742345d66f9e65969c2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: GameManager
+    className: GameFlow
   - hash:
       serializedVersion: 2
       Hash: 0568889868f6fb744b2ecba530349fde
@@ -1307,7 +1310,7 @@ ScriptsOnlyBuild:
     className: SendRateField
   - hash:
       serializedVersion: 2
-      Hash: f7356a381ebe88d46eb4694a404df4c9
+      Hash: 5049f50997419769c6697247b2525f9c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AutoLobby
@@ -1577,7 +1580,7 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
-      Hash: 25230e8801000ffb63a02d58e34c04a6
+      Hash: e3272080e29733b390f84bd8d85862b6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -1771,4 +1774,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Main.unity
   - Assets/Scenes/BallBattle.unity
-  playerPath: D:/UnityProjects/Pong-Battle/BUILD/Ball Battle.exe
+  playerPath: D:/UnityProjects/Pong Battle/Pong-Battle/Build/Ball Battle.exe

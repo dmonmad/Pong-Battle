@@ -352,8 +352,8 @@ GameObject:
   - component: {fileID: 1195483217}
   - component: {fileID: 1195483216}
   m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
+  m_Name: GameFlow
+  m_TagString: gameflow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,8 +372,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnBalls: 1
   chooseCorner: 0
-  spawnBallTimer: 5
-  spawnTimer: 0
+  spawnBallTimer: 4
+  spawnTimer: 2
   playerPrefab: {fileID: 847435455497272291, guid: 7b5d9919af3313e47977f4313908a93c,
     type: 3}
   cameraPrefab: {fileID: 5471322870102213830, guid: 7625de1147c88a943a7cfe8aa2740883,
