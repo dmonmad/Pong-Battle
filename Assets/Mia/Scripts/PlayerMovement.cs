@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviourPun
     public float pushRadius;
     public TextMesh playerName;
     public string PlayerNameString;
-    public GameFlow gameflow;
 
 
     public GameObject explodeParticle;
@@ -45,7 +44,6 @@ public class PlayerMovement : MonoBehaviourPun
 
     private void Start()
     {
-        gameflow = GameObject.FindGameObjectWithTag("gameflow").GetComponent<GameFlow>();
 
         SetColor();
 
@@ -141,7 +139,6 @@ public class PlayerMovement : MonoBehaviourPun
 
     void Die()
     {
-        gameflow.CheckPlayersLeft();
         Instantiate(explodeParticle, gameObject.transform.position, Quaternion.identity);
         this.photonView.RPC("DestroyPlayer", RpcTarget.OthersBuffered);
         Destroy(this.gameObject);
@@ -208,7 +205,7 @@ public class PlayerMovement : MonoBehaviourPun
 
         Instantiate(explodeParticle, info.photonView.gameObject.transform.position, Quaternion.identity);
         Destroy(info.photonView.gameObject);
-        gameflow.CheckPlayersLeft();        
+  
     }
 
     [PunRPC]

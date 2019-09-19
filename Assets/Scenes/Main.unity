@@ -1215,7 +1215,7 @@ MonoBehaviour:
   CanStartCount: 0
   CanLoadLevel: 0
   maxPlayersPerRoom: 4
-  minPlayersPerRoom: 2
+  minPlayersPerRoom: 1
 --- !u!4 &404056200
 Transform:
   m_ObjectHideFlags: 0

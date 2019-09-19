@@ -11,6 +11,7 @@ public class GameFlow : MonoBehaviourPun
     public float chooseCorner;
     public float spawnBallTimer = 5;
     public float spawnTimer = 0;
+    int playersAlive = 0;
     public GameObject playerPrefab;
     public GameObject cameraPrefab;
     public GameObject ballPrefab;
@@ -19,6 +20,7 @@ public class GameFlow : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
+        InvokeRepeating("CheckPlayersLeft", 0.1f, 1f);
         spawnPlayer();
     }
 
@@ -32,8 +34,8 @@ public class GameFlow : MonoBehaviourPun
 
         if (SpawnBalls)
         {
-
-            if (GameObject.FindGameObjectsWithTag("player").Length >= 2)
+            playersAlive = GameObject.FindGameObjectsWithTag("player").Length;
+            if (playersAlive >= 2)
             {
                 spawnTimer += Time.deltaTime;
                 if (spawnTimer > spawnBallTimer)
@@ -42,6 +44,10 @@ public class GameFlow : MonoBehaviourPun
                     spawnTimer = 0;
                     chooseCornerFunc();
                 }
+            }
+            else
+            {
+                CheckPlayersLeft();
             }
         }
     }
@@ -88,7 +94,7 @@ public class GameFlow : MonoBehaviourPun
 
     public void CheckPlayersLeft()
     {
-        if(GameObject.FindGameObjectsWithTag("player").Length <= 1)
+        if(playersAlive <= 1)
         {
             if (PhotonNetwork.IsMasterClient)
             {
