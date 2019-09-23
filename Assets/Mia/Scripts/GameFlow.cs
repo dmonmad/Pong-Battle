@@ -20,8 +20,10 @@ public class GameFlow : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("CheckPlayersLeft", 0.1f, 1f);
+        PhotonNetwork.AutomaticallySyncScene = true;
+        //InvokeRepeating("CheckPlayersLeft", 0.1f, 1f);
         spawnPlayer();
+        playersAlive = PhotonNetwork.CurrentRoom.PlayerCount;
     }
 
     // Update is called once per frame
@@ -45,11 +47,9 @@ public class GameFlow : MonoBehaviourPun
                     chooseCornerFunc();
                 }
             }
-            else
-            {
-                CheckPlayersLeft();
-            }
         }
+
+        CheckPlayersLeft();
     }
 
     Vector3 chooseCornerFunc()
@@ -92,7 +92,7 @@ public class GameFlow : MonoBehaviourPun
         //mycamera.GetComponent<cameraFollow>().target = player.transform.GetChild(0);
     }
 
-    public void CheckPlayersLeft()
+    void CheckPlayersLeft()
     {
         if(playersAlive <= 1)
         {

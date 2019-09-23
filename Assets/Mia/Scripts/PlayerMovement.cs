@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviourPun
     public TextMesh playerName;
     public string PlayerNameString;
 
-
     public GameObject explodeParticle;
     public GameObject pushParticle;
 
@@ -52,14 +51,12 @@ public class PlayerMovement : MonoBehaviourPun
         {
             PlayerNameString = PhotonNetwork.NickName + " : " + photonView.ViewID;
             playerName.text = PlayerNameString;
-            //photonView.RPC("setName", RpcTarget.OthersBuffered, playerName.text);
         }
         else
         {
             playerName.text = photonView.Owner.NickName + " : " + photonView.ViewID;
         }
 
-        //explodeParticle = Resources.Load("Explode") as GameObject;
 
     }
 
@@ -110,12 +107,6 @@ public class PlayerMovement : MonoBehaviourPun
                 Debug.Log("PULSANDO F");
                 Push();
             }
-
-            //if (Input.GetKeyDown(KeyCode.M))
-            //{
-            //    Die();
-            //}
-
         }
     }
 
@@ -211,15 +202,9 @@ public class PlayerMovement : MonoBehaviourPun
     [PunRPC]
     void PushBack(int[] idArray, PhotonMessageInfo e)
     {
-        //Debug.LogWarning("RPC RECIBIDO POR " + this.photonView.ViewID + " QUE CORRESPONDE A " + this.photonView.Owner.NickName + " que ha sido enviado por " + info.photonView.Owner.NickName + " con ID "+ info.photonView.ViewID);
-        //if (this.photonView.IsMine && info.photonView.ViewID == this.photonView.ViewID)
-        //{
-        //Debug.Log("???????????");
 
         for(int i=0; i < idArray.Length; i++)
         {
-            //Debug.Log("!!!!!!!");
-            //Debug.Log("Valor IDARRAY[" + i + "] es " + idArray[i]);
             if(idArray[i] != 0)
             {
                 Instantiate(pushParticle, gameObject.transform.position, Quaternion.identity);
@@ -229,39 +214,7 @@ public class PlayerMovement : MonoBehaviourPun
                 go.GetComponent<Rigidbody>().AddForce(knockback.normalized * pushForce, ForceMode.Impulse);
                 //Debug.Log("EL NOMBRE DE GO ES " + go.name);
             }
-
-
-            //GameObject pusher = PhotonView.Find(data.photonView.ViewID).gameObject;
-            //Vector3 knockback = go.gameObject.transform.position - pusher.gameObject.transform.position;
-            //go.GetComponent<Rigidbody>().AddForce(knockback.normalized * PushForce);
-
         }
-
-        //}
-            //bool shouldIPush = false;
-
-            //for (int i = 0; i < idArray.Length; i++)
-            //{
-            //    Debug.Log("Mi ID es " + photonView.ViewID + " y el ID a comparar es " + idArray[i]);
-            //    if (idArray[i] == photonView.ViewID)
-            //    {
-            //        shouldIPush = true;
-            //    }
-            //    else
-            //    {
-            //        shouldIPush = false;
-            //    }
-            //}
-
-            //if (shouldIPush)
-            //{
-            //    Debug.LogError("AÑADIENDO FUERZA A RB");
-            //    gameObject.transform.position = new Vector3(0, 0, -0.5f);
-
-            //}
-
-            //Debug.Log("WTF");
-        
     }
 
     [PunRPC]

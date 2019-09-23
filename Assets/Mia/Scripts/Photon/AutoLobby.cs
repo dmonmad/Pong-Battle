@@ -34,7 +34,7 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     public void Start()
     {
         Connect();
-
+        SetName();
     }
 
     public void Connect()

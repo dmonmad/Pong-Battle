@@ -130,6 +130,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
     - Class: 223
@@ -1580,7 +1582,7 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
-      Hash: e3272080e29733b390f84bd8d85862b6
+      Hash: 25230e8801000ffb63a02d58e34c04a6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -1774,4 +1776,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Main.unity
   - Assets/Scenes/BallBattle.unity
-  playerPath: D:/UnityProjects/Pong Battle/Pong-Battle/Build/Ball Battle.exe
+  playerPath: D:/UnityProjects/Pong-Battle/Build/Ball Battle.exe
