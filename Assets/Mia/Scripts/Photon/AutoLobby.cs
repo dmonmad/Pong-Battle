@@ -21,8 +21,8 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     public TextMeshProUGUI CountDown;
     public float CountDownTimer;
     public float CountDownLeft;
-    public bool CanStartCount = false;
-    public bool CanLoadLevel = false;
+    public bool CanStartCount;
+    public bool CanLoadLevel;
 
 
     public byte maxPlayersPerRoom;
@@ -34,8 +34,10 @@ public class AutoLobby : MonoBehaviourPunCallbacks
     public void Start()
     {
         Connect();
-        SetName();
-    }
+        CanStartCount = false;
+        CanLoadLevel = false;
+    //SetName();
+}
 
     public void Connect()
     {
@@ -173,17 +175,9 @@ public class AutoLobby : MonoBehaviourPunCallbacks
                     if (CountDownLeft <= 0)
                     {
 
-                        if (!string.IsNullOrEmpty(PlayerNameField.text))
-                        {
-                            Debug.Log("Setting the name " + PlayerNameField.text);
-                            PhotonNetwork.NickName = PlayerNameField.text;
-                        }
-                        else
-                        {
-                            PhotonNetwork.NickName = DefaultName;
-                        }
+                        SetName();
 
-                    if (PhotonNetwork.IsMasterClient)
+                        if (PhotonNetwork.IsMasterClient)
                         {
                             LoadMap();
 
@@ -202,16 +196,28 @@ public class AutoLobby : MonoBehaviourPunCallbacks
 
     private void LoadMap()
     {
+        Debug.Log("LOADMAP");
+
         if (!isLoading)
         {
             isLoading = true;
-
+            Debug.Log("Loading Level");
             PhotonNetwork.LoadLevel("BallBattle");
         }
+
+        
     }
 
     private void SetName()
     {
-        PlayerName.text = PhotonNetwork.NickName;
+        if (!string.IsNullOrEmpty(PlayerNameField.text))
+        {
+            Debug.Log("Setting the name " + PlayerNameField.text);
+            PhotonNetwork.NickName = PlayerNameField.text;
+        }
+        else
+        {
+            PhotonNetwork.NickName = DefaultName;
+        }
     }
 }

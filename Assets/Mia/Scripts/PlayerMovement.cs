@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviourPun
     Rigidbody rb;
 
     public Material[] colors;
+    public GameFlow gameflow;
 
     public bool isPlayer = false;
 
@@ -130,6 +131,7 @@ public class PlayerMovement : MonoBehaviourPun
 
     void Die()
     {
+        GameFlow.CheckPlayersLeft();
         Instantiate(explodeParticle, gameObject.transform.position, Quaternion.identity);
         this.photonView.RPC("DestroyPlayer", RpcTarget.OthersBuffered);
         Destroy(this.gameObject);
@@ -193,10 +195,11 @@ public class PlayerMovement : MonoBehaviourPun
     [PunRPC]
     void DestroyPlayer(PhotonMessageInfo info)
     {
-
+        
         Instantiate(explodeParticle, info.photonView.gameObject.transform.position, Quaternion.identity);
         Destroy(info.photonView.gameObject);
-  
+        GameFlow.CheckPlayersLeft();
+
     }
 
     [PunRPC]

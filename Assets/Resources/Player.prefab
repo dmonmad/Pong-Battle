@@ -136,7 +136,6 @@ MonoBehaviour:
   pushRadius: 5
   playerName: {fileID: 6643075145190380628}
   PlayerNameString: 
-  gameflow: {fileID: 0}
   explodeParticle: {fileID: 4550527056472925406, guid: 12a16dc701ed03f47b93b73d6842de16,
     type: 3}
   pushParticle: {fileID: 4833300066859298433, guid: 4287ec7df89067b4c810305b6c22b204,
@@ -149,6 +148,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: fd41e438e2c592d48b90d393fc569053, type: 2}
   - {fileID: 2100000, guid: 8b0b19679cdac2a45934146cb6af3d93, type: 2}
   - {fileID: 2100000, guid: 8d106c8290c11874dadb19dfdb1d80c7, type: 2}
+  gameflow: {fileID: 0}
   isPlayer: 0
 --- !u!114 &6794524372264788967
 MonoBehaviour:

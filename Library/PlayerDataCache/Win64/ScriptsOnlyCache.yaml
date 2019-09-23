@@ -1582,7 +1582,7 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
-      Hash: 25230e8801000ffb63a02d58e34c04a6
+      Hash: 3630aa7751e8e15d006ca83a6cbf9b49
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement

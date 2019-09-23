@@ -21,7 +21,6 @@ public class GameFlow : MonoBehaviourPun
     void Start()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        //InvokeRepeating("CheckPlayersLeft", 0.1f, 1f);
         spawnPlayer();
         playersAlive = PhotonNetwork.CurrentRoom.PlayerCount;
     }
@@ -49,7 +48,6 @@ public class GameFlow : MonoBehaviourPun
             }
         }
 
-        CheckPlayersLeft();
     }
 
     Vector3 chooseCornerFunc()
@@ -89,12 +87,11 @@ public class GameFlow : MonoBehaviourPun
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, 0, 1.2f), new Quaternion(0, 0, 0, 0));
         player.name = PhotonNetwork.NickName;
         GameObject mycamera = Instantiate(cameraPrefab, new Vector3(0, 0, 1.2f), new Quaternion(0, 0, 0, 0));
-        //mycamera.GetComponent<cameraFollow>().target = player.transform.GetChild(0);
     }
 
-    void CheckPlayersLeft()
+    public static void CheckPlayersLeft()
     {
-        if(playersAlive <= 1)
+        if(GameObject.FindGameObjectsWithTag("player").Length <= 1)
         {
             if (PhotonNetwork.IsMasterClient)
             {
