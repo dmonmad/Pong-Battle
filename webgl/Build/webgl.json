@@ -1,0 +1,16 @@
+{
+"companyName": "Nightm4re Games",
+"productName": "Ball Battle",
+"productVersion": "Alpha 0.1",
+"dataUrl": "webgl.data.unityweb",
+"wasmCodeUrl": "webgl.wasm.code.unityweb",
+"wasmFrameworkUrl": "webgl.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#090909",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.2.0f1"
+}
