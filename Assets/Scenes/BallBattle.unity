@@ -372,6 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnBalls: 1
   chooseCorner: 0
+  playersNeeded: 1
   spawnBallTimer: 4
   spawnTimer: 2
   playerPrefab: {fileID: 847435455497272291, guid: 7b5d9919af3313e47977f4313908a93c,

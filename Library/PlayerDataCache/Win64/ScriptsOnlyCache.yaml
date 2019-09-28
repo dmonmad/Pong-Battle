@@ -8,7 +8,8 @@ ScriptsOnlyBuild:
     - MK.Glow.Legacy.MKGlow
     - MK.Glow.Resources
     - OmniSARTechnologies.LiteFPSCounter.LiteFPSCounter
-    - PlayerMovement
+    - PlayerScript
+    - PushBarController
     - UnityEngine.PostProcessing.PostProcessingBehaviour
     - UnityEngine.PostProcessing.PostProcessingProfile
     - cameraFollow
@@ -36,6 +37,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TMP_SubMeshUI
+    - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -78,8 +80,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
-    - Class: 102
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -107,15 +107,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11068}
     - Class: 114
-      Script: {instanceID: 11704}
+      Script: {instanceID: 11410}
     - Class: 114
-      Script: {instanceID: 11826}
+      Script: {instanceID: 11624}
     - Class: 114
-      Script: {instanceID: 12086}
+      Script: {instanceID: 11706}
     - Class: 114
-      Script: {instanceID: 12102}
+      Script: {instanceID: 11828}
     - Class: 114
-      Script: {instanceID: 12106}
+      Script: {instanceID: 12046}
+    - Class: 114
+      Script: {instanceID: 12088}
+    - Class: 114
+      Script: {instanceID: 12104}
+    - Class: 114
+      Script: {instanceID: 12108}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -178,8 +184,6 @@ ScriptsOnlyBuild:
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
-      Script: {instanceID: 0}
-    - Class: 102
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -250,27 +254,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11590}
     - Class: 114
-      Script: {instanceID: 11646}
+      Script: {instanceID: 11624}
     - Class: 114
-      Script: {instanceID: 11704}
+      Script: {instanceID: 11648}
     - Class: 114
-      Script: {instanceID: 11720}
+      Script: {instanceID: 11706}
     - Class: 114
-      Script: {instanceID: 11826}
+      Script: {instanceID: 11722}
     - Class: 114
-      Script: {instanceID: 11910}
+      Script: {instanceID: 11828}
     - Class: 114
-      Script: {instanceID: 12086}
+      Script: {instanceID: 11912}
     - Class: 114
-      Script: {instanceID: 12102}
+      Script: {instanceID: 12046}
     - Class: 114
-      Script: {instanceID: 12184}
+      Script: {instanceID: 12088}
     - Class: 114
-      Script: {instanceID: 12222}
+      Script: {instanceID: 12104}
     - Class: 114
-      Script: {instanceID: 12230}
+      Script: {instanceID: 12186}
     - Class: 114
-      Script: {instanceID: 12262}
+      Script: {instanceID: 12224}
+    - Class: 114
+      Script: {instanceID: 12232}
+    - Class: 114
+      Script: {instanceID: 12264}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -826,7 +834,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomPlayerTtlProperty
   - hash:
       serializedVersion: 2
-      Hash: bebb8dc78ddca32875fcc3d4448e8be0
+      Hash: 7ae5ac02e8f71f81bb74ceca0e852e08
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BallMovement
@@ -982,7 +990,7 @@ ScriptsOnlyBuild:
     className: ConnectionHandler
   - hash:
       serializedVersion: 2
-      Hash: 26403ae5df68d742345d66f9e65969c2
+      Hash: b6de3869e939f6c99f3b5171eb544a83
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameFlow
@@ -1348,6 +1356,12 @@ ScriptsOnlyBuild:
     className: Asteroid
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PushBarController
+  - hash:
+      serializedVersion: 2
       Hash: 9db963832ef7feebd35f44e6ad6f646c
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
@@ -1582,10 +1596,10 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
-      Hash: 3630aa7751e8e15d006ca83a6cbf9b49
+      Hash: ca1ca6838831cb147ba8aa6cbc12893b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerMovement
+    className: PlayerScript
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f

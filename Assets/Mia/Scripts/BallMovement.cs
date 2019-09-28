@@ -8,17 +8,16 @@ public class BallMovement : MonoBehaviour {
 
     public float speedX;
     public float speedY;
-    public float startSpeed = 5f;
-
-    public float timeLeft = 5.0f;
 
     public float velocityx;
     public float velocityy;
+    public float SpeedMultiplier;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        SpeedMultiplier = 75;
         startMovement();
         
     }
@@ -34,25 +33,49 @@ public class BallMovement : MonoBehaviour {
 
     void startMovement()
     {
-        speedX = Random.Range(-5, 3);
-        speedY = Random.Range(-3, 5);
+        int option = Random.Range(1, 2);
 
-        if (speedX == 0)
+        if(option == 1)
         {
-            speedX = 2;
+            speedX = Random.Range(-10, -5);
+        }
+        else
+        {
+            speedX = Random.Range(5, 10);
         }
 
-        if (speedY <= 0)
+        int option2 = Random.Range(1, 2);
+
+        if (option2 == 1)
         {
-            speedX = -2;
+            speedY = Random.Range(-10, -5);
         }
+        else
+        {
+            speedY = Random.Range(5, 10);
+        }
+
+
+
+        Debug.Log("Final vector " + new Vector3(speedX * SpeedMultiplier, speedY * SpeedMultiplier, 0));
+
+
+        //if (speedX == 0)
+        //{
+        //    speedX = 2;
+        //}
+
+        //if (speedY <= 0)
+        //{
+        //    speedX = -2;
+        //}
 
         if (speedX == speedY)
         {
             speedX = speedX * -1;
         }
 
-        GetComponent<Rigidbody>().velocity = new Vector3(speedX * 2, speedY * 2, 0);
+        GetComponent<Rigidbody>().AddForce(new Vector3(speedX * SpeedMultiplier, speedY * SpeedMultiplier, 0), ForceMode.Force);
 
     }
 

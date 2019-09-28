@@ -129,10 +129,9 @@ MonoBehaviour:
     type: 3}
   speedX: 0
   speedY: 0
-  startSpeed: 5
-  timeLeft: 5
   velocityx: 0
   velocityy: 0
+  SpeedMultiplier: 0
 --- !u!114 &3037444416847598901
 MonoBehaviour:
   m_ObjectHideFlags: 0

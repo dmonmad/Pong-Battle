@@ -9,8 +9,9 @@ public class GameFlow : MonoBehaviourPun
     public bool SpawnBalls;
 
     public float chooseCorner;
-    public float spawnBallTimer = 5;
-    public float spawnTimer = 0;
+    public float playersNeeded;
+    public float spawnBallTimer;
+    public float spawnTimer;
     int playersAlive = 0;
     public GameObject playerPrefab;
     public GameObject cameraPrefab;
@@ -36,7 +37,7 @@ public class GameFlow : MonoBehaviourPun
         if (SpawnBalls)
         {
             playersAlive = GameObject.FindGameObjectsWithTag("player").Length;
-            if (playersAlive >= 2)
+            if (playersAlive >= playersNeeded)
             {
                 spawnTimer += Time.deltaTime;
                 if (spawnTimer > spawnBallTimer)

@@ -705,7 +705,8 @@
     <Compile Include="Assets\Mia\Scripts\collDetection.cs" />
     <Compile Include="Assets\Mia\Scripts\GameFlow.cs" />
     <Compile Include="Assets\Mia\Scripts\Photon\AutoLobby.cs" />
-    <Compile Include="Assets\Mia\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Mia\Scripts\PlayerScript.cs" />
+    <Compile Include="Assets\Mia\Scripts\PushBarController.cs" />
     <Compile Include="Assets\Mia\Scripts\UpdatedTextScript.cs" />
     <Compile Include="Assets\OmniSARTechnologies\Common\Helper\GUI\ColorHelper.cs" />
     <Compile Include="Assets\OmniSARTechnologies\Common\Helper\Reflection\CustomAttributes.cs" />
